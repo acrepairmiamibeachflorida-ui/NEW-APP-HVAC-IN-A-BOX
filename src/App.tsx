@@ -364,7 +364,7 @@ export default function App() {
     saveState(safeView, stepIndex, responses, profile);
   }, [view, stepIndex, responses, profile, profileValid]);
 
-  useEffect(() => {
+   useEffect(() => {
     if (!profileValid && view !== "profile") {
       setView("profile");
     }
@@ -382,6 +382,10 @@ export default function App() {
   const currentStep = steps[stepIndex];
   const currentResponse = responses[stepIndex];
   const noneIndex = currentResponse.checklist.length - 1;
+
+   useEffect(() => {
+  window.scrollTo(0, 0);
+}, [view, stepIndex]);
 
   const leak = useMemo(() => {
     const baseRevenue = Number(profile.calls || 0) * Number(profile.ticket || 0) * (Number(profile.close || 0) / 100);
