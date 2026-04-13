@@ -195,17 +195,76 @@ function AppShell({ children, view, setView, leak, completion, company, saveAndE
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <header className="sticky top-0 z-40 flex items-center justify-between border-b border-white/10 bg-black/85 p-4 backdrop-blur-xl">
-        <button onClick={() => setOpen(true)} className="text-xl text-white">☰</button>
-        <div className="flex items-center gap-2">
-          <div className="font-bold text-amber-300">HVAC-IN-A-BOX</div>
-          <div className="text-sm font-semibold">Command Center</div>
+
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
+  <div className="flex items-center justify-between px-4 py-3">
+    {/* LEFT */}
+    <div className="flex items-center gap-3 min-w-0">
+      <button
+        onClick={() => setOpen(true)}
+        className="shrink-0 text-xl text-white transition hover:opacity-80"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
+
+      <div className="flex min-w-0 items-center gap-2">
+        <span className="truncate font-semibold tracking-[0.16em] text-white">
+          HVAC
+        </span>
+        <span className="text-white/45">IN</span>
+        <span className="truncate font-semibold tracking-[0.16em] text-white">
+          A BOX
+        </span>
+      </div>
+    </div>
+
+    {/* RIGHT */}
+    <div className="flex items-center gap-3 sm:gap-4">
+      {/* PROGRESS */}
+      <div className="hidden text-right sm:block">
+        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">
+          Progress
         </div>
-        <div className="flex items-center gap-2">
-          <div className="text-xs font-semibold text-amber-300">{formatMoney(leak)}</div>
-          <button onClick={saveAndExit} className="rounded-lg bg-white/10 px-3 py-2 text-xs font-semibold text-white">Save & Exit</button>
+        <div className="text-sm font-medium text-white/75">
+          {stepsCompleted} / {steps.length}
         </div>
-      </header>
+      </div>
+
+      {/* LEAK TOTAL */}
+      <div className="text-right">
+        <div className="text-[10px] uppercase tracking-[0.18em] text-white/40">
+          Monthly Leak
+        </div>
+        <div
+          className={`text-base font-semibold text-amber-300 transition-all duration-300 sm:text-lg ${
+            flash ? "scale-105 drop-shadow-[0_0_10px_rgba(251,191,36,0.45)]" : ""
+          }`}
+        >
+          {formatMoney(leak)}
+        </div>
+      </div>
+
+      {/* SAVE */}
+      <button
+        onClick={saveAndExit}
+        className="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
+      >
+        Save & Exit
+      </button>
+    </div>
+  </div>
+
+  {/* MICRO PROGRESS BAR */}
+  <div className="h-[2px] w-full bg-white/5">
+    <div
+      className="h-full bg-amber-300 transition-all duration-500"
+      style={{ width: `${completion}%` }}
+    />
+  </div>
+</header>
 
       <AnimatePresence>
         {open ? (
