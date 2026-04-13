@@ -197,7 +197,7 @@ function AppShell({ children, view, setView, leak, completion, company, saveAndE
     <div className="min-h-screen bg-black text-white">
       <header className="sticky top-0 z-40 flex items-center justify-between border-b border-white/10 bg-black/85 p-4 backdrop-blur-xl">
         <button onClick={() => setOpen(true)} className="text-xl text-white">☰</button>
-        <div className="flex items-center gap-2">
+       <div className="ml-2 flex items-center gap-2">
           <div className="font-bold text-amber-300">HVAC-IN-A-BOX</div>
           <div className="text-sm font-semibold">Command Center</div>
         </div>
