@@ -199,7 +199,7 @@ function AppShell({ children, view, setView, leak, completion, company, saveAndE
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
   <div className="flex items-center justify-between px-4 py-3">
     {/* LEFT */}
-    <div className="flex items-center min-w-0">
+   <div className="flex items-center gap-3 min-w-0">
   <button
     onClick={() => setOpen(true)}
     className="shrink-0 text-xl text-white transition hover:opacity-80"
@@ -208,9 +208,9 @@ function AppShell({ children, view, setView, leak, completion, company, saveAndE
     ☰
   </button>
 
-  <div className="ml-4 h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
+  <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
 
-  <div className="ml-3 flex min-w-0 items-center gap-2">
+  <div className="flex min-w-0 items-center gap-2">
     <span className="truncate font-semibold tracking-[0.16em] text-white">
       HVAC
     </span>
