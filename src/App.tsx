@@ -10,8 +10,7 @@ export default function App() {
         justifyContent: "center",
         fontFamily: "Arial, sans-serif",
         fontSize: "24px"
-      }}
-    >
+      }}>
       HVAC-IN-A-BOX Premium Live
     </div>
   );
