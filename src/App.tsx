@@ -1,3 +1,41 @@
+Skip to content
+acrepairmiamibeachflorida-ui
+NEW-APP-HVAC-IN-A-BOX
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+Files
+Go to file
+t
+src
+App.tsx
+main.tsx
+styles.css
+index.html
+package.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+NEW-APP-HVAC-IN-A-BOX/src
+/App.tsx
+acrepairmiamibeachflorida-ui
+acrepairmiamibeachflorida-ui
+Update App.tsx
+8d1c7ca
+ · 
+36 minutes ago
+
+Code
+
+Blame
+816 lines (735 loc) · 36.6 KB
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -199,27 +237,27 @@ function AppShell({ children, view, setView, leak, completion, company, saveAndE
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/75 backdrop-blur-xl">
   <div className="flex items-center justify-between px-4 py-3">
     {/* LEFT */}
-   <div className="flex items-center gap-3 min-w-0">
-  <button
-    onClick={() => setOpen(true)}
-    className="shrink-0 text-xl text-white transition hover:opacity-80"
-    aria-label="Open menu"
-  >
-    ☰
-  </button>
+    <div className="flex items-center gap-3 min-w-0">
+      <button
+        onClick={() => setOpen(true)}
+        className="shrink-0 text-xl text-white transition hover:opacity-80"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
 
-  <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
+      <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.85)]" />
 
-  <div className="flex min-w-0 items-center gap-2">
-    <span className="truncate font-semibold tracking-[0.16em] text-white">
-      HVAC
-    </span>
-    <span className="text-white/45">IN</span>
-    <span className="truncate font-semibold tracking-[0.16em] text-white">
-      A BOX
-    </span>
-  </div>
-</div>
+      <div className="flex min-w-0 items-center gap-2">
+        <span className="truncate font-semibold tracking-[0.16em] text-white">
+          HVAC
+        </span>
+        <span className="text-white/45">IN</span>
+        <span className="truncate font-semibold tracking-[0.16em] text-white">
+          A BOX
+        </span>
+      </div>
+    </div>
 
     {/* RIGHT */}
     <div className="flex items-center gap-3 sm:gap-4">
