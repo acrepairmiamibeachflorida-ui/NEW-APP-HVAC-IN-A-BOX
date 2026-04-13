@@ -1,6 +1,41 @@
-Full App Code
+Skip to content
+acrepairmiamibeachflorida-ui
+NEW-APP-HVAC-IN-A-BOX
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+Files
+Go to file
+t
+src
+App.tsx
+main.tsx
+styles.css
+index.html
+package.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+NEW-APP-HVAC-IN-A-BOX/src
+/App.tsx
+acrepairmiamibeachflorida-ui
+acrepairmiamibeachflorida-ui
+Update App.tsx
+aaf557b
+ · 
+2 hours ago
 
+Code
 
+Blame
+757 lines (683 loc) · 35.1 KB
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
