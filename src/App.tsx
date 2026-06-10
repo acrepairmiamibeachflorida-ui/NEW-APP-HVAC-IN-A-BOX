@@ -1127,12 +1127,16 @@ if (
     const {
       data: { subscription },
     } =
-      supabase.auth.onAuthStateChange(
-        (_event, nextSession) => {
-          setSession(nextSession ?? null);
-          setAuthLoading(false);
-        }
-      );
+  supabase.auth.onAuthStateChange(
+  (event, nextSession) => {
+    setSession(nextSession ?? null);
+    setAuthLoading(false);
+
+    if (event === "PASSWORD_RECOVERY") {
+      setView("resetPassword");
+    }
+  }
+);
 
     return () => {
       mounted = false;
@@ -1229,7 +1233,7 @@ if (
 
   useEffect(() => {
     if (!session?.user?.id) return;
-
+    if (view === "resetPassword") return;
     const saved =
       loadState(session.user.id);
 
@@ -2565,7 +2569,7 @@ if (noneSelected) {
         saveAndExit={saveAndExit}
         setupComplete={profileValid}
         setModal={setModal}
-        email={session.user.email}
+        email={session?.user?.email || ""}
         logout={logout}
       >
         {content}
