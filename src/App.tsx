@@ -1716,6 +1716,40 @@ if (noneSelected) {
     }
   }
 
+async function handleUpdatePassword() {
+  setAuthError("");
+  setAuthMessage("");
+
+  if (newPassword.length < 6) {
+    setAuthError("Password must be at least 6 characters.");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    setAuthError("Passwords do not match.");
+    return;
+  }
+
+  setAuthSubmitting(true);
+
+  try {
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) throw error;
+
+    setAuthMessage("Password updated successfully.");
+    setNewPassword("");
+    setConfirmPassword("");
+    setView("dashboard");
+  } catch (error: any) {
+    setAuthError(error.message || "Could not update password.");
+  } finally {
+    setAuthSubmitting(false);
+  }
+}
+
   async function logout() {
     await supabase.auth.signOut();
 
