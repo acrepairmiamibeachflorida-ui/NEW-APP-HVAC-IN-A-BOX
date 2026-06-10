@@ -1399,9 +1399,10 @@ export default function App() {
           response.checklist
             .slice(0, -1)
             .filter(Boolean).length;
-if (noneSelected) {
-  return;
-} else if (selectedCount > 0) {
+
+        if (noneSelected) {
+          score += 2.2;
+        } else if (selectedCount > 0) {
           const weights =
             steps[idx].weights;
 
@@ -1459,11 +1460,12 @@ if (noneSelected) {
               .filter(Boolean).length;
 
           const multiplier =
-  noneSelected
-    ? 0
-    : selectedCount
-      ? 1 + selectedCount * 0.18
-      : 0;
+            noneSelected
+              ? 1.35
+              : selectedCount
+                ? 1 +
+                  selectedCount * 0.18
+                : 0;
 
           if (!multiplier) return;
 
@@ -2061,17 +2063,12 @@ if (noneSelected) {
             />
           </div>
         ))}
-{!profileValid && profileErrors.length > 0 ? (
-  <div className="text-sm text-red-400">
-    {profileErrors.join(" | ")}
-  </div>
-) : null}
 
-{!profileValid ? (
-  <div className="text-sm text-amber-300">
-    Complete all required fields to begin your diagnosis.
-  </div>
-) : (
+        {!profileValid ? (
+          <div className="text-sm text-amber-300">
+            Complete all required fields to begin your diagnosis.
+          </div>
+        ) : (
           <div className="text-sm text-emerald-300">
             Your setup is complete. You can now begin.
           </div>
