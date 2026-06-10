@@ -7,7 +7,8 @@ type View =
   | "profile"
   | "workbook"
   | "results"
-  | "fixplan";
+  | "fixplan"
+  | "resetPassword";
 
 type Step = {
   title: string;
@@ -64,12 +65,10 @@ type Breakdown = Record<BreakdownKey, number> & {
 };
 
 const SUPABASE_URL =
-  "https://gfdzwuktojxsfhmvoopl.supabase.co"; 
+  "https://snxmacuhsbwmcvxwrklz.supabase.co"; 
 
 const SUPABASE_ANON_KEY =
-  "sb_publishable_K5P90dBo08OmEtDbCrqvcA_owfSAjsU";
-
-
+  "sb_publishable_iRVWZjgwFrvmXjLNfPwrpQ_wQnAzDuS";
 
 const supabase = createClient(
   SUPABASE_URL,
@@ -970,6 +969,18 @@ function AppShell({
               <div className="mt-1 text-xs text-slate-400">
                 Completion: {completion}%
               </div>
+              <button
+  onClick={() => {
+    setView("resetPassword");
+    setOpen(false);
+  }}
+  className="mt-4 rounded-xl bg-white/10 px-4 py-3 text-sm font-semibold text-white"
+  style={{
+    border: "none",
+  }}
+>
+  Change Password
+</button>
 
               <button
                 onClick={logout}
@@ -1034,6 +1045,9 @@ export default function App() {
   const [password, setPassword] =
     useState("");
 
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
   const [authError, setAuthError] =
     useState("");
 
@@ -1081,11 +1095,19 @@ export default function App() {
     }
 
     if (emailParam) {
-      setEmail(
-        emailParam.trim().toLowerCase()
-      );
-    }
-  }, []);
+  setEmail(
+    emailParam.trim().toLowerCase()
+  );
+}
+
+if (
+  window.location.href.includes("type=recovery") ||
+  window.location.hash.includes("type=recovery")
+) {
+  setView("resetPassword");
+}
+}, []);
+ 
 
   useEffect(() => {
     let mounted = true;
@@ -1892,10 +1914,84 @@ if (noneSelected) {
     );
   }
 
+  if (view === "resetPassword") {
+  return (
+    <>
+      <AppShell
+        view={view}
+        setView={setView}
+        leak={leak}
+        completion={completion}
+        company={profile.company}
+        saveAndExit={saveAndExit}
+        setupComplete={profileValid}
+        setModal={setModal}
+        email={session.user.email}
+        logout={logout}
+      >
+        <div className="space-y-4">
+          <Card>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">
+              Account Security
+            </div>
+
+            <div className="mt-2 text-2xl font-semibold">
+              Create Your New Password
+            </div>
+
+            <div className="mt-3 text-sm leading-6 text-slate-400">
+              Enter a new password below. After saving, you can continue into your workbook.
+            </div>
+          </Card>
+
+          <Card>
+            <div className="space-y-4">
+              <input
+                type="password"
+                placeholder="New password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-black/30 p-4 text-white outline-none placeholder:text-slate-600"
+              />
+
+              <input
+                type="password"
+                placeholder="Confirm new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-black/30 p-4 text-white outline-none placeholder:text-slate-600"
+              />
+
+              {authError ? (
+                <div className="text-sm text-red-400">{authError}</div>
+              ) : null}
+
+              {authMessage ? (
+                <div className="text-sm text-emerald-300">{authMessage}</div>
+              ) : null}
+
+              <Btn
+                primary
+                disabled={authSubmitting}
+                onClick={handleUpdatePassword}
+              >
+                {authSubmitting ? "Saving..." : "Save New Password"}
+              </Btn>
+            </div>
+          </Card>
+        </div>
+      </AppShell>
+
+      <Modal state={modal} />
+    </>
+  );
+}
+
   let content: React.ReactNode;
 
   if (view === "dashboard") {
-    const nextStepTitle =
+
+     const nextStepTitle =
       completion >= 100
         ? "Your Results Are Ready"
         : steps[stepIndex]?.title ||
@@ -2523,20 +2619,9 @@ if (noneSelected) {
         ) : null}
       </AnimatePresence>
 
-      <Modal state={modal} />
+           <Modal state={modal} />
     </>
   );
 }
 
-export const ghlToSupabaseEdgeFunctionPayloadExample =
-  {
-    email: "{{contact.email}}",
-    password:
-      "{{contact.custom_fields.temp_password}}",
-    fullName: "{{contact.full_name}}",
-    companyName:
-      "{{contact.company_name}}",
-    phone: "{{contact.phone}}",
-    redirectUrl:
-      "https://new-app-hvac-in-a-box.vercel.app?redirect=workbook",
-  };
+  
