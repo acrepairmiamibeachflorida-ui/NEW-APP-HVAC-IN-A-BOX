@@ -67,7 +67,9 @@ const SUPABASE_URL =
   "https://snxmacuhsbwmcvxwrklz.supabase.co"; 
 
 const SUPABASE_ANON_KEY =
-  "sb_publishable_iRVWZjgwFrvmXjLNfPwrpQ_wQnAzDuS";
+  "sb_publishable_K5P90dBo08OmEtDbCrqvcA_owfSAjsU";
+
+
 
 const supabase = createClient(
   SUPABASE_URL,
