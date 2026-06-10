@@ -1,15 +1,3 @@
-/import { createClient } from "@supabase/supabase-js";
-
-const SUPABASE_URL =
-  "https://snxmacuhsbwmcvxwrklz.supabase.co/rest/v1/";
-
-const SUPABASE_ANON_KEY =
-  "sb_publishable_CzMkPhvKNr6Mu6XSDIH6nA_-eolcu7j";
-
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
