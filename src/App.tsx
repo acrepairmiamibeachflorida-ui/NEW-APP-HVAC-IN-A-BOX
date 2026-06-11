@@ -65,7 +65,7 @@ type Breakdown = Record<BreakdownKey, number> & {
 };
 
 const SUPABASE_URL =
-  "https://snxmacuhsbwmcvxwrklz.supabase.co"; 
+  "https://gfdzwuktojxsfhmvoopl.supabase.co";
 
 const SUPABASE_ANON_KEY =
   "sb_publishable_iRVWZjgwFrvmXjLNfPwrpQ_wQnAzDuS";
