@@ -68,7 +68,7 @@ const SUPABASE_URL =
   "https://gfdzwuktojxsfhmvoopl.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmZHp3dWt0b2p4c2ZobXZvb3BsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODM3NTksImV4cCI6MjA5MTE1OTc1OX0.9gXPF4J5Xzes4iwRB2f3YV16SBHnCNGv4WMn0dlzPQY";
+  "sb_publishable_K5P90dBo08OmEtDbCrqvcA_owfSAjsU";
 
 const supabase = createClient(
   SUPABASE_URL,
